@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import RedditContainer from "./main/RedditContainer";
 
 class App extends Component {
   render() {
-    return <h1>Hello</h1>;
+    return <RedditContainer />;
   }
 }
 
