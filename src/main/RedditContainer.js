@@ -24,7 +24,12 @@ class RedditContainer extends Component {
   };
 
   fetchPosts(url) {
-    console.log(url);
+    fetch(url, {})
+      .then(resp => resp.json())
+      .then(data => console.log(data.data.children))
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
