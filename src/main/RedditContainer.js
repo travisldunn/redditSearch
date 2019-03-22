@@ -15,18 +15,19 @@ class RedditContainer extends Component {
   componentWillUnmount() {}
 
   handleSearch = query => {
-    console.log(query);
+    let searchUrl = `https://www.reddit.com/r/${query}.json?limit=25`;
+    this.setState({ searchUrl });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("submiting");
+    this.fetchPosts(this.state.searchUrl);
   };
 
   fetchPosts(url) {
     fetch(url, {})
       .then(resp => resp.json())
-      .then(data => console.log(data.data.children))
+      .then(data => this.setState({ posts: data.data.children }))
       .catch(error => {
         console.log(error);
       });
@@ -36,7 +37,7 @@ class RedditContainer extends Component {
     return (
       <div className="home">
         <SearchBar onChange={this.handleSearch} onSubmit={this.handleSubmit} />
-        <PostContainer />
+        <PostContainer posts={this.state.posts} />
       </div>
     );
   }
