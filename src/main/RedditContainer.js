@@ -10,9 +10,12 @@ class RedditContainer extends Component {
 
   componentDidMount() {
     this.fetchPosts(this.state.searchUrl);
+    this.interval = setInterval(this.fetchPosts(this.state.searchUrl), 60000);
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   handleSearch = query => {
     let searchUrl = `https://www.reddit.com/r/${query}.json?limit=25`;
