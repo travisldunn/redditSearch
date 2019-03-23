@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "../components/SearchBar";
 import PostContainer from "../components/PostContainer";
+import { toast } from "react-toastify";
 
 class RedditContainer extends Component {
   state = {
@@ -32,7 +33,7 @@ class RedditContainer extends Component {
       .then(resp => resp.json())
       .then(data => this.setState({ posts: data.data.children }))
       .catch(error => {
-        console.log(error);
+        toast.error("oops that that subreddit does not exist yet!");
       });
   }
 
