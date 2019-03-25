@@ -36,8 +36,10 @@
     "jest": "^24.5.0"
   },
   "dependencies": {
+    "jest-fetch-mock": "^2.1.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-testing-library": "^6.0.2",
     "react-toastify": "^4.5.2"
   }
 }
